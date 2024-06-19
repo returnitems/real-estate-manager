@@ -1,6 +1,6 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-const PropertyForm = ({ handleAddProperty }) => {
+const UpdatePropertyForm = ({ selectedProperty, handleUpdateProperty }) => {
     const [formData, setFormData] = useState({
         name: "",
         price: "",
@@ -8,18 +8,29 @@ const PropertyForm = ({ handleAddProperty }) => {
         apartments: "",
     });
 
-    const handleChange = (event) => {
+    useEffect(() => {
+        if (selectedProperty) {
+            setFormData({
+                name: selectedProperty.name,
+                price: selectedProperty.price,
+                location: selectedProperty.location,
+                apartments: selectedProperty.apartments,
+            });
+        }
+    }, [selectedProperty]);
+
+    const handleUpdate = (event) => {
         setFormData({...formData, [event.target.name]: event.target.value});
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        handleAddProperty(formData);
+        handleUpdateProperty(formData, selectedProperty._id);
     };
 
     return (
         <div>
-            <h4>Add a new property</h4>
+            <h4>Update Property</h4>
             <hr />
             <form onSubmit={handleSubmit}>
                 <label htmlFor="name">Property Name</label>
@@ -27,7 +38,7 @@ const PropertyForm = ({ handleAddProperty }) => {
                 id="name"
                 name="name"
                 value={formData.name}
-                onChange={handleChange}
+                onChange={handleUpdate}
                 required 
                 />
 
@@ -36,7 +47,7 @@ const PropertyForm = ({ handleAddProperty }) => {
                 id="price"
                 name="price"
                 value={formData.price}
-                onChange={handleChange}
+                onChange={handleUpdate}
                 required
                 />
 
@@ -45,7 +56,7 @@ const PropertyForm = ({ handleAddProperty }) => {
                 id="location"
                 name="location"
                 value={formData.location}
-                onChange={handleChange}
+                onChange={handleUpdate}
                 required
                 />
 
@@ -54,7 +65,7 @@ const PropertyForm = ({ handleAddProperty }) => {
                 id="apartments"
                 name="apartments"
                 value={formData.apartments}
-                onChange={handleChange}
+                onChange={handleUpdate}
                 required
                 />
                 <button type="submit">Add Property</button>
@@ -63,4 +74,4 @@ const PropertyForm = ({ handleAddProperty }) => {
     )
 };
 
-export default PropertyForm;
+export default UpdatePropertyForm;
