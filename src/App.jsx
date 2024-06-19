@@ -8,6 +8,7 @@ import Properties from "./components/Properties/Properties.jsx";
 import PropertyForm from "./components/Properties/PropertyForm.jsx";
 import PropertyDetail from "./components/Properties/PropertyDetail.jsx";
 import UpdatePropertyForm from "./components/Properties/UpdatePropertyForm.jsx";
+import PropertyDeleteConf from "./components/Properties/PropertyDeleteConf.jsx";
 import Residents from "./components/Residents/Residents.jsx";
 import ResidentDetail from "./components/Residents/ResidentDetail.jsx";
 
@@ -96,6 +97,9 @@ const App = () => {
       )}
       {view === 'updateprop' && (
         <UpdatePropertyForm selectedProperty={selectedProperty} handleUpdateProperty={handleUpdateProperty} />
+      )}
+      {view === 'deleteprop' && (
+        <PropertyDeleteConf setView={setView} selectedProperty={selectedProperty} handleDeleteProperty={handleDeleteProperty} />
       )}
       {view === 'residents' && (
         <Residents setView={setView} residentService={residentService} setSelectedResident={setSelectedResident} />
