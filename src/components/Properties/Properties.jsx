@@ -31,6 +31,7 @@ const Properties = ({ setView, propertyService, setSelectedProperty }) => {
                     <h2>{property.name}</h2>
                 </div>
             ))}
+            <button onClick={(event) => {event.preventDefault(); setView('add'); }}>Add New Property</button>
         </div>
     )
 };
