@@ -4,6 +4,7 @@ import * as residentService from "./services/residentService.js";
 import Navbar from "./components/Navbar/Navbar";
 import Homepage from "./components/Homepage/Homepage";
 import Properties from "./components/Properties/Properties.jsx";
+import PropertyDetail from "./components/Properties/PropertyDetail.jsx";
 import Residents from "./components/Residents/Residents.jsx";
 
 const App = () => {
@@ -19,6 +20,9 @@ const App = () => {
       )}
       {view === 'properties' && (
         <Properties setView={setView} propertyService={propertyService} setSelectedProperty={setSelectedProperty} />
+      )}
+      {view === 'propdetails' && (
+        <PropertyDetail />
       )}
       {view === 'residents' && (
         <Residents setView={setView} residentService={residentService} setSelectedResident={setSelectedResident} />

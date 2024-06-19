@@ -6,7 +6,7 @@ const Properties = ({ setView, propertyService, setSelectedProperty }) => {
     const handleClick = (event, property) => {
         event.preventDefault();
         setSelectedProperty(property);
-        setView('details');
+        setView('propdetails');
     };
 
     useEffect(() => {

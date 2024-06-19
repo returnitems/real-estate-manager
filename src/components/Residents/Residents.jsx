@@ -6,7 +6,7 @@ const Residents = ({ setView, residentService, setSelectedResident }) => {
     const handleClick = (event, resident) => {
         event.preventDefault();
         setSelectedResident(resident);
-        setView('details');
+        setView('resdetails');
     };
 
     useEffect(() => {
