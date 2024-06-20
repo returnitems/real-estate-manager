@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import './PropertyDetail.css';
 
 const PropertyDetail = ({ selectedProperty }) => {
     const navigate = useNavigate();

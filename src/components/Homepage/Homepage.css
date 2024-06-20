@@ -1,0 +1,21 @@
+.playwrite-ng-modern-fontz {
+  font-family: "Playwrite NG Modern", cursive;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+h1 {
+    font-family: "Playwrite NG Modern", sans-serif;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+h3 {
+    font-family: "Playwrite NG Modern", sans-serif;
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}

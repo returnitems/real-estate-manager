@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import './App.css';
 import * as propertyService from "./services/propertyService.js";
 // import * as residentService from "./services/residentService.js";
 import Navbar from "./components/Navbar/Navbar";
@@ -87,7 +88,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className="App">
       <Navbar />
       {/* {view === 'home' && (
         <Homepage />
@@ -140,7 +141,7 @@ const App = () => {
           }
         />
       </Routes>
-    </>
+    </div>
   );
 };
 
