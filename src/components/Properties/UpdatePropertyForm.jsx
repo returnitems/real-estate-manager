@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import './UpdatePropertyForm.css';
 
 const UpdatePropertyForm = ({ selectedProperty, handleUpdateProperty }) => {
     const [formData, setFormData] = useState({
@@ -29,49 +30,63 @@ const UpdatePropertyForm = ({ selectedProperty, handleUpdateProperty }) => {
     };
 
     return (
-        <div>
-            <h4>Update Property</h4>
-            <hr />
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Property Name</label>
-                <input 
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleUpdate}
-                required 
-                />
+      <div className="container">
+        <h4 className="update-heading">Update Property Form</h4>
+        <hr />
+        <form className="update-form" onSubmit={handleSubmit}>
+          <label htmlFor="name" className="form-label">
+            Property Name
+          </label>
+          <input
+            id="name"
+            name="name"
+            value={formData.name}
+            onChange={handleUpdate}
+            required
+            className="form-control"
+          />
 
-                <label htmlFor="price">Price of Property</label>
-                <input 
-                id="price"
-                name="price"
-                value={formData.price}
-                onChange={handleUpdate}
-                required
-                />
+          <label htmlFor="price" className="form-label">
+            Price of Property
+          </label>
+          <input
+            id="price"
+            name="price"
+            value={formData.price}
+            onChange={handleUpdate}
+            required
+            className="form-control"
+          />
 
-                <label htmlFor="location">Address of Property</label>
-                <input 
-                id="location"
-                name="location"
-                value={formData.location}
-                onChange={handleUpdate}
-                required
-                />
+          <label htmlFor="location" className="form-label">
+            Address of Property
+          </label>
+          <input
+            id="location"
+            name="location"
+            value={formData.location}
+            onChange={handleUpdate}
+            required
+            className="form-control"
+          />
 
-                <label htmlFor="apartments">Number of Apartments</label>
-                <input
-                id="apartments"
-                name="apartments"
-                value={formData.apartments}
-                onChange={handleUpdate}
-                required
-                />
-                <button type="submit">Add Property</button>
-            </form>
-        </div>
-    )
+          <label htmlFor="apartments" className="form-label">
+            Number of Apartments
+          </label>
+          <input
+            id="apartments"
+            name="apartments"
+            value={formData.apartments}
+            onChange={handleUpdate}
+            required
+            className="form-control"
+          />
+          <button className="btn btn-info" type="submit">
+            Update Property
+          </button>
+        </form>
+      </div>
+    );
 };
 
 export default UpdatePropertyForm;

@@ -1,0 +1,30 @@
+.playwrite-ng-modern-fontz {
+  font-family: "Playwrite NG Modern", cursive;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+}
+
+.new-form-heading {
+    font-size: 18px;
+    position: relative;
+    padding-top: 20px;
+    margin: 0 auto;
+    width: fit-content;
+    font-family: "Playwrite NG Modern", cursive;
+}
+
+.new-form {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.form-label {
+    margin-top: 15px;
+    font-family: "Playwrite NG Modern", sans-serif;
+}
+
+.btn {
+    width: fit-content;
+}
