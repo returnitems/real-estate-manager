@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import * as propertyService from "./services/propertyService.js";
-import * as residentService from "./services/residentService.js";
+// import * as residentService from "./services/residentService.js";
 import Navbar from "./components/Navbar/Navbar";
 import Homepage from "./components/Homepage/Homepage";
 import Properties from "./components/Properties/Properties.jsx";
@@ -9,14 +8,15 @@ import PropertyForm from "./components/Properties/PropertyForm.jsx";
 import PropertyDetail from "./components/Properties/PropertyDetail.jsx";
 import UpdatePropertyForm from "./components/Properties/UpdatePropertyForm.jsx";
 import PropertyDeleteConf from "./components/Properties/PropertyDeleteConf.jsx";
-import Residents from "./components/Residents/Residents.jsx";
-import ResidentDetail from "./components/Residents/ResidentDetail.jsx";
+// import Residents from "./components/Residents/Residents.jsx";
+// import ResidentDetail from "./components/Residents/ResidentDetail.jsx";
+
 
 const App = () => {
   const [view, setView] = useState('home');
   const [propertyList, setPropertyList] = useState([]);
   const [selectedProperty, setSelectedProperty] = useState(null);
-  const [selectedResident, setSelectedResident] = useState(null);
+  // const [selectedResident, setSelectedResident] = useState(null);
 
 
 
@@ -100,12 +100,6 @@ const App = () => {
       )}
       {view === 'deleteprop' && (
         <PropertyDeleteConf setView={setView} selectedProperty={selectedProperty} handleDeleteProperty={handleDeleteProperty} />
-      )}
-      {view === 'residents' && (
-        <Residents setView={setView} residentService={residentService} setSelectedResident={setSelectedResident} />
-      )}
-      {view === 'resdetails' && (
-        <ResidentDetail setView={setView} selectedResident={selectedResident} />
       )}
     </>
   )

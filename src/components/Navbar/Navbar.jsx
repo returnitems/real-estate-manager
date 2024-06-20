@@ -3,7 +3,7 @@ const Navbar = ({setView}) => {
         <>
             <a href="" onClick={(event) => {event.preventDefault(); setView('home');}}>Home</a>
             <a href="" onClick={(event) => {event.preventDefault(); setView('properties');}}>Properties</a>
-            <a href="" onClick={(event) => {event.preventDefault(); setView('residents');}}>Residents</a>
+            {/* <a href="" onClick={(event) => {event.preventDefault(); setView('residents');}}>Residents</a> */}
         </>
     )
 };

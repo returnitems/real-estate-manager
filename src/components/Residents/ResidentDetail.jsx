@@ -1,9 +1,9 @@
-const ResidentDetail = () => {
-    return (
-        <div>
+// const ResidentDetail = () => {
+//     return (
+//         <div>
 
-        </div>
-    )
-};
+//         </div>
+//     )
+// };
 
-export default ResidentDetail;
+// export default ResidentDetail;

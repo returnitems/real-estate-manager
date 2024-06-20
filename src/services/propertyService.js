@@ -51,4 +51,18 @@ const remove = async (propertyId) => {
 };
 
 
+// const addResidentToApartment = async (propertyId, apartmentId, residentData) => {
+//     try {
+//         const res = await fetch(`${BASE_URL}/${propertyId}/apartments/${apartmentId}/residents`, {
+//             method: 'POST',
+//             headers: {'Content-Type': 'application/json'},
+//             body: JSON.stringify(residentData),
+//         });
+//         return res.json();
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
+
+
 export { index, create, update, remove };
