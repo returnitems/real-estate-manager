@@ -1,20 +1,25 @@
-const Properties = ({ setView, propertyList, setSelectedProperty }) => {
+import { Link } from "react-router-dom";
+
+const Properties = ({ propertyList, setSelectedProperty }) => {
     
-    const handleClick = (event, property) => {
-        event.preventDefault();
+    const handleClick = (property) => {
+        // event.preventDefault();
         setSelectedProperty(property);
-        setView('propdetails');
     };
 
 
     return (
         <div> 
             {propertyList.map((property) => (
-                <div key={property._id} onClick={(event) => handleClick(event, property)} >
-                    <h2>{property.name}</h2>
+                <div key={property._id}>
+                    <Link to={`/properties/${property._id}`} onClick={() => handleClick(property)} >
+                        <h2>{property.name}</h2>
+                    </Link>
                 </div>
             ))}
-            <button onClick={(event) => {event.preventDefault(); setView('addprop'); }}>Add New Property</button>
+            <Link to='/properties/new'>
+                <button>Add New Property</button>
+            </Link>
         </div>
     )
 };

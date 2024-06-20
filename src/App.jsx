@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import * as propertyService from "./services/propertyService.js";
 // import * as residentService from "./services/residentService.js";
 import Navbar from "./components/Navbar/Navbar";
@@ -13,25 +14,27 @@ import PropertyDeleteConf from "./components/Properties/PropertyDeleteConf.jsx";
 
 
 const App = () => {
-  const [view, setView] = useState('home');
+  // const [view, setView] = useState('home');
   const [propertyList, setPropertyList] = useState([]);
   const [selectedProperty, setSelectedProperty] = useState(null);
   // const [selectedResident, setSelectedResident] = useState(null);
+  const navigate = useNavigate();
 
 
+
+  const fetchProperties = async () => {
+    try {
+      const properties = await propertyService.index();
+      if (!properties) {
+        throw new Error("No properties found.");
+      }
+      setPropertyList(properties);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchProperties = async () => {
-      try {
-        const properties = await propertyService.index();
-        if (!properties) {
-          throw new Error("No properties found.");
-        }
-        setPropertyList(properties);
-      } catch (error) {
-        console.log(error);
-      }
-    };
     fetchProperties();
   }, []);
 
@@ -42,7 +45,8 @@ const App = () => {
         throw new Error(newProperty.error)
       }
       setPropertyList([newProperty, ...propertyList]);
-      setView('properties');
+      // setView('properties');
+      navigate('/properties');
     } catch (error) {
       console.log(error);
     }
@@ -56,15 +60,16 @@ const App = () => {
       }
       setPropertyList(propertyList.map((property) => (property._id === propertyId ? updateProperty : property)));
       setSelectedProperty(updateProperty);
-      setView('propdetails');
+      // setView('propdetails');
+      navigate('/properties/' + propertyId);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handlePropDeleteConfirmation = () => {
-    setView('deleteprop');
-  };
+  // const handlePropDeleteConfirmation = () => {
+  //   setView('deleteprop');
+  // };
 
   const handleDeleteProperty = async (propertyId) => {
     try {
@@ -74,7 +79,8 @@ const App = () => {
       }
       setPropertyList(propertyList.map((property) => property._id !== propertyId));
       setSelectedProperty(null);
-      setView('properties');
+      // setView('properties');
+      navigate('/properties');
     } catch (error) {
       console.log(error);
     }
@@ -82,8 +88,8 @@ const App = () => {
 
   return (
     <>
-      <Navbar setView={setView} />
-      {view === 'home' && (
+      <Navbar />
+      {/* {view === 'home' && (
         <Homepage />
       )}
       {view === 'properties' && (
@@ -100,9 +106,42 @@ const App = () => {
       )}
       {view === 'deleteprop' && (
         <PropertyDeleteConf setView={setView} selectedProperty={selectedProperty} handleDeleteProperty={handleDeleteProperty} />
-      )}
+      )} */}
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route
+          path="/properties"
+          element={<Properties propertyList={propertyList} setSelectedProperty={setSelectedProperty}/>}
+        />
+        <Route
+          path="/properties/new"
+          element={<PropertyForm handleAddProperty={handleAddProperty} />}
+        />
+        <Route
+          path="/properties/:id"
+          element={<PropertyDetail selectedProperty={selectedProperty} />}
+        />
+        <Route
+          path="/properties/:id/edit"
+          element={
+            <UpdatePropertyForm
+              selectedProperty={selectedProperty}
+              handleUpdateProperty={handleUpdateProperty}
+            />
+          }
+        />
+        <Route
+          path="/properties/:id/delete"
+          element={
+            <PropertyDeleteConf
+              selectedProperty={selectedProperty}
+              handleDeleteProperty={handleDeleteProperty}
+            />
+          }
+        />
+      </Routes>
     </>
-  )
+  );
 };
 
 export default App;
