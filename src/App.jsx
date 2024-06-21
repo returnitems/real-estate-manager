@@ -78,7 +78,7 @@ const App = () => {
       if (deleteProperty.error) {
         throw new Error(deleteProperty.error)
       }
-      setPropertyList(propertyList.filter((property) => property._id !== propertyId));
+      setPropertyList(propertyList.filter((property) => property._id !== propertyId)); //Changed propertyList.map to propertyList.filter for proper filteration of the list post deletion.
       setSelectedProperty(null);
       // setView('properties');
       navigate('/properties');
