@@ -78,7 +78,7 @@ const App = () => {
       if (deleteProperty.error) {
         throw new Error(deleteProperty.error)
       }
-      setPropertyList(propertyList.map((property) => property._id !== propertyId));
+      setPropertyList(propertyList.filter((property) => property._id !== propertyId));
       setSelectedProperty(null);
       // setView('properties');
       navigate('/properties');
